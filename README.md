@@ -1,33 +1,38 @@
-# Email Spoofing Detection
+# Email Spoofing Detection Readme
 
-## Overview
+## Description
 
-A Python script that checks for potential email spoofing by verifying the SPF (Sender Policy Framework) of the sender's domain against the client's IP address.
+This Python script checks for email spoofing by verifying the sender's domain using SPF (Sender Policy Framework) and the client's IP address. It parses an email message and performs SPF checks to determine if the email is potentially spoofed.
+
+## Features
+
+- **Domain Extraction:** Extracts the sender's domain from the email address.
+- **SPF Check:** Utilizes the SPF library to verify the legitimacy of the sender's domain.
+- **Email Spoofing Detection:** Detects potential email spoofing based on SPF check results.
 
 ## Usage
 
-1. **Run the Script:**
+1. Provide the email content in the `email_content` variable.
+2. Replace the `client_ip` variable with the actual client IP address.
+3. Run the script to check for email spoofing.
 
-   - Ensure you have Python installed.
+## Functions
 
-   ```bash
-   python email_spoofing_detection.py
-   ```
+### `get_domain_from_email(email)`
 
-2. **Customize Example:**
+Extracts the domain from the given email address.
 
-   - Modify the `email_content` and `client_ip` variables in the script with your own values.
+### `check_spf(sender_address, client_ip)`
 
-3. **View Results:**
-   - The script will print a warning if potential email spoofing is detected.
+Performs SPF checks on the sender's domain using the provided sender address and client IP.
 
-## Example
+### `is_email_spoofed(raw_email, client_ip)`
+
+Checks if the email is potentially spoofed based on SPF results.
+
+## Example Usage
 
 ```python
-from email import message_from_string
-import spf
-
-# Example usage
 email_content = """
 From: name.surname1@example.com
 To: name.surname2@example.com
